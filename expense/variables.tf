@@ -1,3 +1,5 @@
+#ec2 variable
+
 variable "instance_names" {
     type = list
     defualt = ["db","backend","frontend"]
@@ -18,9 +20,11 @@ variable "common_tags" {
     default = {
         Project = "Expense"
         Environment = "Dev"
+        terraform = "true"
     }
 }
 
+#security_group variable
 variable "sg_name" {
     default = "allow_ssh"
 }
@@ -40,4 +44,14 @@ variable "protocol" {
 variable "allowed_cidr" {
     type = list(string) #optional
     default = ["0.0.0.0/0"]
+}
+
+#R53 variables
+
+variable "zone_id" {
+    defualt = " " #copy from AWS R53
+}
+
+variable "domain_name" {
+    default = "daws78s.online" #copy from AWS
 }

@@ -1,4 +1,4 @@
-resource "aws_instance" "db" {
+resource "aws_instance" "expense" {
     count = length(var.instance_names)
     ami = var.image.id
     instance_type = var.instance_names[count.index] == "db" ? "t3.small" : "t3.micro"
@@ -30,6 +30,7 @@ resource "aws_security_group" "allow_ssh" {
         protocol = "-1" # -1 all protocals
         cidr_blocks = ["0.0.0.0/0"]
     }
+    
     tags = {
         Name = "allow_ssh"
         CreatedBy = "Sivakumar"
